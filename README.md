@@ -47,5 +47,10 @@ also trigger a check anytime from **Admin → Updates**.
 Found a bug or want a feature? Open an [issue](https://github.com/leviceroy/Dividend-Tracker/issues/new/choose).
 See the [roadmap](ROADMAP.md) for what's planned.
 
+## License
+
+Proprietary — free to use during the beta. See the [EULA](EULA.md). The Software
+is licensed, not sold; redistribution and reverse engineering are not permitted.
+
 ---
-© Chris Wenk
+© Chris Wenk. All rights reserved.
