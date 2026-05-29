@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Roadmap
+    url: https://github.com/leviceroy/Dividend-Tracker/blob/main/ROADMAP.md
+    about: See what's shipped, planned, and under consideration.
