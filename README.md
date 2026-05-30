@@ -202,16 +202,55 @@ so every tab fills with realistic numbers immediately. **Delete demo data** remo
 exactly those rows — your own data is never touched. Loading is blocked once you've
 entered real transactions.
 
-## Roadmap
+## Coming next
 
-See the full [ROADMAP](ROADMAP.md). Top of the queue:
+A focused build queue, in the order it'll land. Tap an issue and 👍 to push it
+up the list — the more votes, the sooner it ships.
 
-- Withholding-tax tracking + Swiss DA-1 reclaim (**in development** — keep an eye on the
-  Admin "under development" notes in the app)
-- Live expense ratio + TTM yield per instrument
-- Real broker-declared ex-dividend calendar
-- DA-1 tax-year CSV export
-- Windows build
+#### 1. Broker CSV import — Schwab · Fidelity · IBKR · Swissquote · UBS
+
+Stop typing dividends by hand. Drop in a broker CSV, map the columns once, and
+the app dedups the rest. This is the biggest day-one friction, so it lands
+first.
+→ [#9 Broker CSV import](https://github.com/leviceroy/Dividend-Tracker/issues/9)
+
+#### 2. Per-ticker drill page — your dividend journal
+
+Click any holding or dividend → a dedicated page for that ticker: full dividend
+history, growth chart, positions across accounts, fundamentals, and a
+free-form research note that persists. The "tell me everything about JNJ" view
+the app is missing.
+→ [#10 Per-ticker drill page](https://github.com/leviceroy/Dividend-Tracker/issues/10)
+
+#### 3. Two new Dashboard charts — Yield-on-Cost over time + Forward-income trajectory
+
+The two visuals that *show* the dividend-growth thesis: YoC tilting up as raises
+compound, and forward annual income climbing month by month. Pure internal work,
+no external feed, fast turnaround.
+→ [#16 YoC + Forward trajectory charts](https://github.com/leviceroy/Dividend-Tracker/issues/16)
+
+#### 4. Dividend Safety Score — open-formula, no subscription
+
+A 0–100 safety read on every holding — payout ratio, FCF coverage, debt,
+recession resilience — with **every weight documented** (no black box). Plus
+the dividend-growth-investor companions: Chowder Number, 5-year DGR, payout
+ratio, FCF coverage as columns on Holdings.
+→ [#6 Safety + Chowder / 5y / payout / FCF](https://github.com/leviceroy/Dividend-Tracker/issues/6)
+
+#### 5. Real declared ex-dates + alerts
+
+Replace the history-projected calendar with broker-declared ex-dates, and
+notify you on macOS when an ex-date is coming up or a dividend gets cut /
+raised. Sequenced with the Safety Score because they share the same upstream
+fundamentals feed.
+→ [#3 Declared ex-dividend calendar](https://github.com/leviceroy/Dividend-Tracker/issues/3)
+
+**After those**, in priority order: watchlist · benchmark comparison
+(SPY/VYM/SCHD/SSMI) · per-jurisdiction tax exports (DA-1, 1099-DIV) · allocation
+by market value · reinvestment simulator · FIRE timeline curve · Windows build
+· iOS read-only companion. The full backlog lives in
+[ROADMAP.md](ROADMAP.md) and the
+[roadmap issues](https://github.com/leviceroy/Dividend-Tracker/issues?q=is%3Aissue+label%3Aroadmap).
 
 Found a bug or have an idea? Open an
 [issue](https://github.com/leviceroy/Dividend-Tracker/issues/new/choose).
