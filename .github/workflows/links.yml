@@ -1,0 +1,46 @@
+name: Link check
+
+# Verifies every link and image in the repo's Markdown still resolves. Runs on
+# any push that touches a .md file, weekly Monday mornings, and on demand.
+# Opens (or updates) an issue when broken links are found.
+
+on:
+  push:
+    branches: [main]
+    paths: ["**/*.md"]
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run lychee
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # accept rate-limit responses (429) and partial content (206) as OK;
+          # cap concurrency so we don't hammer providers.
+          args: >-
+            --no-progress
+            --max-concurrency 4
+            --accept 200,206,429
+            --exclude-mail
+            './**/*.md'
+          output: lychee/out.md
+          fail: false
+
+      - name: Create or update tracking issue on failure
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Broken Markdown links detected"
+          content-filepath: lychee/out.md
+          labels: bug,link-rot
