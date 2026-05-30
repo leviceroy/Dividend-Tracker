@@ -1,56 +1,249 @@
+<div align="center">
+
+<img alt="Dividend Tracker" src="images/logo.png" width="140">
+
+<br/>
+<br/>
+
 # Dividend Tracker
 
-A fast, local-first dividend journal for serious income investors — multi-account,
-multi-currency, withholding-aware, with live valuation and dividend-growth analytics.
-Your data stays on your Mac in a single SQLite file; nothing is uploaded.
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1100&color=5B9BD5&center=true&vCenter=true&width=640&lines=The+dividend+income+command+center.;Local-first+%C2%B7+multi-currency+%C2%B7+private.;Know+your+forward+income+%E2%80%94+to+the+franc.)](https://github.com/leviceroy/Dividend-Tracker)
 
-> This repository hosts the **downloadable macOS builds** and release notes.
-> The source code is maintained privately.
+<br/>
 
-## Download
+<!-- Project Health -->
+![Release](https://img.shields.io/github/v/release/leviceroy/Dividend-Tracker?style=flat&logo=github&color=5B9BD5)
+![Downloads](https://img.shields.io/github/downloads/leviceroy/Dividend-Tracker/total?style=flat&logo=github&label=Downloads&color=5FB3A3)
+![Last Commit](https://img.shields.io/github/last-commit/leviceroy/Dividend-Tracker?style=flat&logo=git&color=8E84C4)
+![Open Issues](https://img.shields.io/github/issues/leviceroy/Dividend-Tracker?style=flat&logo=github&color=C2A25E)
 
-Grab the latest `.dmg` from the [**Releases**](https://github.com/leviceroy/Dividend-Tracker/releases/latest) page.
+<!-- Tech / Platform -->
+![Platform](https://img.shields.io/badge/Platform-macOS-000000?style=flat&logo=apple&logoColor=white)
+![Tauri](https://img.shields.io/badge/Tauri-2-24C8DB?style=flat&logo=tauri&logoColor=white)
+![React](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react&logoColor=000)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat&logo=typescript&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-local--first-003B57?style=flat&logo=sqlite&logoColor=white)
+[![License](https://img.shields.io/badge/License-Proprietary_(EULA)-525B68?style=flat)](EULA.md)
 
-Currently free to download during the beta.
+<br/>
 
-## Install (macOS)
+[![⬇️ Download the latest release](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_Download_the_latest_release-5B9BD5?style=for-the-badge)](https://github.com/leviceroy/Dividend-Tracker/releases/latest)
 
-The app is not yet notarized with an Apple Developer ID, so macOS Gatekeeper will
-warn on first launch. To open it:
+<br/>
 
-1. Move **Dividend Tracker.app** to `/Applications`.
-2. Right-click the app → **Open** → **Open** (only needed the first time), or run:
+**Explore:** [Features](#features) · [Screenshots](#screenshots) · [Download](#download--install) · [Manual](MANUAL.md) · [Roadmap](ROADMAP.md) · [FAQ](#faq)
+
+<br/>
+
+<img alt="Dividend Tracker — dashboard" src="images/dashboard.png" width="100%">
+
+</div>
+
+---
+
+> [!IMPORTANT]
+> **Dividend Tracker is Bloomberg for dividend investors — on your Mac.**
+>
+> A serious, local-first dividend journal: every payment, every position, every account,
+> every currency — analyzed with decision-grade accuracy. Live prices, forward income on a
+> trailing-12-month DPS basis, yield-on-cost on the capital actually invested, dividend
+> CAGR & growth streaks, splits & DRIP handled correctly, FIRE income target — and your
+> data never leaves your machine.
+>
+> **Free during the beta.** **[⬇️ Download the .dmg →](https://github.com/leviceroy/Dividend-Tracker/releases/latest)**
+>
+> First launch on macOS: right-click the app → **Open** → **Open** (not Apple-notarized yet).
+
+<div align="center">
+
+# Your entire dividend life, in one local-first command center.
+
+</div>
+
+## Why Dividend Tracker
+
+- **Local-first and private.** Your portfolio lives in a single SQLite file on your Mac.
+  No accounts, no cloud, no broker logins, no telemetry. Back it up like any other file.
+- **Built for the multi-account, multi-currency reality.** Track Fidelity USD next to a
+  Swiss broker in CHF; convert with live ECB rates *or* the historical pay-date rate; see
+  the same number consistently across every tab.
+- **Decision-grade accuracy.** Forward income on the *trailing-12-month DPS sum* (not a
+  single payment × frequency, the trap most trackers fall into). Yield-on-cost on the
+  reporting currency actually invested (FX at purchase), not today's spot applied to old
+  costs. Splits, special dividends, and DRIP handled the way an analyst would.
+- **A serious income command center.** Live valuation, current yield, unrealized & realized
+  P&L, total return, CAGR, growth streaks, cut detection, concentration, FIRE-target
+  progress, an upcoming-ex-date calendar — all in one dense, dark dashboard.
+
+## Features
+
+### 📊 Dashboard — the income command center
+
+KPIs (TTM/YTD/MTD income, forward annual + indicated, yield-on-cost, current yield),
+valuation (market value, unrealized & realized P&L, total return), dividend growth
+(CAGR, streaks, cut detection), concentration (HHI), FIRE income-target progress, and a
+projected ex-dividend calendar — every card hover-expandable for the math behind it.
+
+<p align="center"><img alt="Dashboard" src="images/dashboard.png" width="92%"></p>
+
+Breakdowns by account and source currency, lifetime cumulative-income curve, sector
+allocation, and the Top-10 dividend-payer **heatmap** (area = income, color = DPS growth).
+
+<p align="center"><img alt="Dashboard — charts & treemap" src="images/dashboard-charts.png" width="92%"></p>
+
+### 💸 Dividends — the income ledger
+
+Every payment in a year/month tree with totals: gross, withholding, net, FX rate,
+reporting-currency local net, effective WHT %, and per-row YoC (split-adjusted).
+
+<p align="center"><img alt="Dividends ledger" src="images/dividends.png" width="92%"></p>
+
+The entry form auto-fills shares, DPS, FX, and ex-date when possible, with flags for
+qualifying / DRIP / special. Reinvested dividends with a price create the share-accruing
+"buy" automatically.
+
+<p align="center"><img alt="Dividend entry form" src="images/dividends-form.png" width="78%"></p>
+
+### 🏦 Holdings — what you own, what it pays
+
+Per-position view: native + reporting cost (FX at purchase), forward annual income, YoC.
+Sortable; portfolio totals in the footer.
+
+<p align="center"><img alt="Holdings" src="images/holdings.png" width="92%"></p>
+
+### 🔁 Transactions — the source of truth
+
+Buys, sells, opening balances, **stock splits**, and DRIP-generated buys, all in one
+ledger. Holdings derive from this via weighted-average cost. Splits scale shares and WAC
+correctly so cost basis stays intact.
+
+<p align="center"><img alt="Transactions" src="images/transactions.png" width="92%"></p>
+
+The transaction form supports T+1 settle-date auto-fill on the correct market calendar
+(US NYSE / Swiss SIX, holidays included) and an FX-rate-at-trade field with one-click
+historical fetch — so cost basis reflects what you actually invested in your reporting
+currency.
+
+<p align="center"><img alt="Transaction form — FX at trade" src="images/transactions-form.png" width="78%"></p>
+
+### 🏛 Accounts — per-broker rollup
+
+Each broker account with currency, TTM income, and live market value of its holdings.
+Default-sorted by value.
+
+<p align="center"><img alt="Accounts" src="images/accounts.png" width="92%"></p>
+
+### ⚙️ Admin — preferences, demo data, updates
+
+Reporting currency, FX display mode (at-current vs at-transaction) and provider, FIRE
+income target, **demo-data load/delete**, the database file location, in-app updates, and
+release notes.
+
+<p align="center"><img alt="Admin" src="images/admin.png" width="92%"></p>
+
+### And…
+
+- **Multi-currency**, with two display modes: **at-current** (live ECB / Yahoo rates) for
+  net-worth tracking, **at-transaction** (pay-date rate) for tax reporting.
+- **Splits, special dividends, DRIP** — modeled correctly, not approximated.
+- **Auto-updates** — the app checks for new signed releases on launch and offers an
+  in-place update with release notes.
+- **Universal binary** — runs natively on Apple Silicon and Intel.
+
+## Screenshots
+
+<p align="center">
+  <img src="images/dashboard.png" width="48%">
+  <img src="images/dashboard-charts.png" width="48%">
+</p>
+<p align="center">
+  <img src="images/dividends.png" width="48%">
+  <img src="images/holdings.png" width="48%">
+</p>
+<p align="center">
+  <img src="images/transactions.png" width="48%">
+  <img src="images/accounts.png" width="48%">
+</p>
+<p align="center">
+  <img src="images/admin.png" width="48%">
+  <img src="images/dividends-form.png" width="48%">
+</p>
+
+## Download & Install
+
+Grab the latest **`.dmg`** from
+[**Releases**](https://github.com/leviceroy/Dividend-Tracker/releases/latest).
+Universal build — Apple Silicon and Intel.
+
+1. Open the `.dmg` and drag **Dividend Tracker** to `/Applications`.
+2. First launch: **right-click → Open → Open** (the app isn't Apple-notarized yet, so
+   Gatekeeper warns).
+   Or, from the terminal:
    ```
    xattr -dr com.apple.quarantine "/Applications/Dividend Tracker.app"
    ```
 
-Universal build — runs natively on Apple Silicon and Intel.
+The app starts with an **empty database** (per user, under
+`~/Library/Application Support/com.chrismeiam.dividend-tracker/`). Pop into **Admin → Load
+demo data** to explore with a sample portfolio before entering your own.
 
 ## Updates
 
-The app checks for new releases on launch and offers to update in-place
-(downloads, verifies a cryptographic signature, installs, relaunches). You can
-also trigger a check anytime from **Admin → Updates**.
+The app checks the public release feed on launch and prompts to install a newer signed
+version (verifies a cryptographic signature, downloads, installs, relaunches). You can
+trigger a check anytime from **Admin → Check for updates** — and read the release notes
+from **Admin → Release notes**.
 
-## What it does
+## Try it instantly
 
-- Multi-account, multi-currency dividend ledger (reporting currency of your choice)
-- Live market value, current yield, unrealized & realized P&L, total return
-- Forward income (trailing-12-month DPS), yield-on-cost on capital actually invested
-- Dividend CAGR, growth streaks, and cut detection
-- Withholding-tax tracking with Swiss DA-1 reclaim
-- Stock splits, special dividends, and DRIP handled correctly
-- FIRE / income-target progress
+**Admin → DEMO DATA → Load demo data** seeds two sample accounts (Fidelity USD,
+Swissquote CHF), four holdings (JNJ, KO, NESN, NOVN), and five recent dividend payments
+so every tab fills with realistic numbers immediately. **Delete demo data** removes
+exactly those rows — your own data is never touched. Loading is blocked once you've
+entered real transactions.
 
-## Feedback
+## Roadmap
 
-Found a bug or want a feature? Open an [issue](https://github.com/leviceroy/Dividend-Tracker/issues/new/choose).
-See the [roadmap](ROADMAP.md) for what's planned.
+See the full [ROADMAP](ROADMAP.md). Top of the queue:
+
+- Withholding-tax tracking + Swiss DA-1 reclaim (**in development** — keep an eye on the
+  Admin "under development" notes in the app)
+- Live expense ratio + TTM yield per instrument
+- Real broker-declared ex-dividend calendar
+- DA-1 tax-year CSV export
+- Windows build
+
+Found a bug or have an idea? Open an
+[issue](https://github.com/leviceroy/Dividend-Tracker/issues/new/choose).
+
+## FAQ
+
+**Is my data private?** Yes. It lives in a single SQLite file on your Mac. No accounts,
+no cloud, no broker connection.
+
+**Does it connect to my broker?** No. You enter buys, sells, splits, and dividends
+yourself (the demo data shows the shape). The app fetches **public** market prices,
+exchange rates, and historical dividend events from Yahoo / Frankfurter (ECB).
+
+**Does it run on Intel Macs?** Yes — universal build.
+
+**Windows?** Planned. The Tauri stack supports it; not built yet.
+
+**Is it really free?** Free during the beta. A yearly subscription is planned later;
+existing installs will keep working.
+
+**Does it give financial or tax advice?** No. It's an informational tool. Verify any
+figure before relying on it for trades or taxes — see the [EULA](EULA.md).
 
 ## License
 
-Proprietary — free to use during the beta. See the [EULA](EULA.md). The Software
-is licensed, not sold; redistribution and reverse engineering are not permitted.
+Proprietary — see the [EULA](EULA.md). The Software is licensed, not sold;
+redistribution and reverse engineering are not permitted.
 
 ---
-© Chris Wenk. All rights reserved.
+
+<div align="center">
+
+© 2026 Chris Wenk. All rights reserved.
+
+</div>
