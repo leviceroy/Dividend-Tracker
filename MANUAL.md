@@ -94,11 +94,13 @@ payer **treemap** (area = income, color = DPS growth — green growing, slate fl
 cut).
 
 **Customise the layout.** Hit **⚙ customise** on the FX banner to open the layout
-panel. Tick / untick widgets to hide them; drag the **⋮⋮** handle to reorder. The
-dashboard uses an auto-fit CSS grid (`repeat(auto-fit, minmax(380px, 1fr))`) so panels
-pack side-by-side on wide windows and stack on narrow ones — no breakpoints to
-configure. Hit **Save** to commit, **Cancel** or **Esc** to discard. **Show all** /
-**Hide all** / **Reset** are one-click bulk actions.
+panel. Tick / untick widgets to hide them; grab the **⋮⋮** handle and drag a row to a
+new position, or use the **▲ / ▼** nudge buttons next to each row to swap with the
+adjacent widget one step at a time. The dashboard uses an auto-fit CSS grid
+(`repeat(auto-fit, minmax(380px, 1fr))`) so panels pack side-by-side on wide windows and
+stack on narrow ones — no breakpoints to configure. Hit **Save** to commit, **Cancel**
+or **Esc** to discard. **Show all** / **Hide all** / **Reset** are one-click bulk
+actions.
 
 <p align="center"><img alt="Dashboard charts & treemap" src="images/dashboard-charts.png" width="92%"></p>
 
