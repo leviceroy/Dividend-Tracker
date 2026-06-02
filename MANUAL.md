@@ -34,9 +34,10 @@ mix with your real data.
 
 ### 1. Dashboard
 
-The income command center. Three KPI rows, an income-target progress strip, two charts,
-breakdowns, a lifetime cumulative-income curve, an allocation chart, and the Top-10
-dividend-payer treemap.
+The income command center. Multiple KPI rows, a FIRE progress / timeline pair, a
+benchmark comparison strip, breakdowns, trajectory + drawdown + ex-date heatmap +
+cumulative-income charts, sector allocation, and the Top-10 dividend-payer treemap —
+every card click-expandable for the formula and per-ticker contributor stats.
 
 <p align="center"><img alt="Dashboard" src="images/dashboard.png" width="92%"></p>
 
@@ -46,22 +47,58 @@ portfolios).
 **Forward income** — annual run-rate on the *trailing-12-month DPS sum* (not "latest
 payment × frequency"), with an "indicated" value visible on hover that uses the most
 recent payment × frequency for a snapshot of the latest raise. Plus forward monthly,
-yield-on-cost (on the reporting-ccy amount actually invested), and current yield.
+yield-on-cost (on the reporting-ccy amount actually invested), and current yield. The
+**gross vs net** forward-income view (Admin → GOALS) controls whether the headline is
+gross of WHT or net of each holding's effective TTM withholding rate.
 
 **Valuation** — live market value, unrealized P&L, realized P&L on closed positions, and
 total return (unrealized + realized + lifetime dividends). Refresh prices via the
 ↻ button.
 
-**Dividend growth** — income growth YoY, average 3-year DPS CAGR across holdings,
-consecutive-increase streaks, and dividend cuts.
+**Dividend growth** — income growth YoY, income-weighted 3-year DPS CAGR (with hover
+detail of contributors and coverage), best consecutive-increase streak, count of growers
+≥3y, and a list of recent dividend cuts.
 
-**FIRE income target** — set it in **Admin → GOALS**; a progress bar shows forward annual
-vs target with the remaining gap (monthly).
+**Quality** — Chowder Number (yield + 5y DGR, threshold ≥12 for yld <3%, ≥8 for ≥3%),
+income-weighted 5y DGR, payout ratio (DPS ÷ EPS, income-weighted across held tickers),
+and FCF coverage (FCF ÷ annual dividends paid, multiple). Each card's detail panel
+explains the formula and threshold band; the sub-line on each card shows how many
+tickers contributed and what fraction of TTM income they cover, so you can see when the
+headline isn't representative.
 
-**Charts** — Monthly Income (last 24 months), Forward Calendar (next 12 months, projected
-at historical cadence), Cumulative Income (lifetime), Allocation by value (sector), and
-the Top-10 payer treemap (area = income, color = DPS growth — green growing, slate flat,
-red cut).
+**Efficiency · Tax · Risk** — TTM WHT paid, effective TTM WHT %, US DA-1 recoverable
+(against the treaty target % in Admin), portfolio concentration (HHI) by value, and the
+**Dividend Safety Score** — an income-weighted 0-100 read across held equities, banded
+Very safe / Safe / Borderline / Unsafe / Very unsafe. Open formula; click the card for
+the full per-holding contributor table and weight breakdown.
+
+**FIRE timeline** — set the annual income target in **Admin → GOALS**; the progress bar
+shows forward annual vs target. Below it, the **FIRE timeline chart** projects forward
+annual income month by month using your income-weighted 3y CAGR as the growth assumption
+(falls back to Admin → GOALS → "default growth %" until you have ≥3 complete years).
+Optional monthly contribution (Admin → GOALS) shows up as a second curve, buying shares
+at current yield. The chart resolves an ETA when forward income reaches target, or warns
+"FIRE not within 30-year horizon — raise growth, contributions, or target."
+
+**Benchmark comparison** — choose an index ticker in **Admin → BENCHMARK** (SPY, VYM,
+SCHD, SSMI, or any other). The strip shows portfolio vs benchmark on 1-year total
+return, current yield, and 3-year DGR — with the spread highlighted in green when you're
+ahead.
+
+**Charts** — Monthly Income (24m), Forward Calendar (next 12m), **Trajectory** (YoC and
+forward annual income over the last 36 months — visualises the dividend-growth thesis),
+**Drawdown** (TTM income drawdown and total-return drawdown side-by-side), **Ex-date
+heatmap** (78 weeks back, 26 ahead), Upcoming ex-dates list, breakdowns by account and
+currency, Cumulative Income (lifetime), Allocation by value (sector), and the Top-10
+payer **treemap** (area = income, color = DPS growth — green growing, slate flat, red
+cut).
+
+**Customise the layout.** Hit **⚙ customise** on the FX banner to open the layout
+panel. Tick / untick widgets to hide them; drag the **⋮⋮** handle to reorder. The
+dashboard uses an auto-fit CSS grid (`repeat(auto-fit, minmax(380px, 1fr))`) so panels
+pack side-by-side on wide windows and stack on narrow ones — no breakpoints to
+configure. Hit **Save** to commit, **Cancel** or **Esc** to discard. **Show all** /
+**Hide all** / **Reset** are one-click bulk actions.
 
 <p align="center"><img alt="Dashboard charts & treemap" src="images/dashboard-charts.png" width="92%"></p>
 
@@ -176,7 +213,82 @@ works fine.)
 **About**
 - App version, copyright, stack, source link, **EULA**, **Release notes** (links to the
   public release page), and **Check for updates** — runs the same updater the app does on
-  launch and shows the latest release notes inside a dialog.
+  launch and shows the latest release notes inside a dialog. Also lists the **Keyboard
+  shortcuts** (⌘K command palette, **n** to open the new-entry form on most tabs).
+
+---
+
+## Cross-cutting features
+
+### Command palette (⌘K)
+
+Hit **⌘K** anywhere in the app to open a fuzzy-search command palette. Type a few
+letters to filter across tabs, dialogs, and actions — "div" jumps to the Dividends tab,
+"new" surfaces every "new entry" action, "cust" finds the Customise panel. Arrow keys
+navigate, **Return** activates, **Esc** closes. The "⌘K Search" chip on the tab bar is
+the discoverability hint; once you know the shortcut, you'll use it more than the mouse.
+
+### Per-ticker drill page
+
+Click any ticker on Holdings, Dividends, or the dashboard's Top-10 treemap to drop into
+a dedicated page for that holding: full dividend history with split-adjusted DPS,
+multi-year growth chart, current positions across accounts, fundamentals snapshot
+(payout ratio, EPS TTM, debt/equity, FCF yield), and a free-form **research note** that
+persists across sessions. The drill page is modal — the tab bar locks while it's open
+to avoid accidentally jumping away mid-research.
+
+### CSV export
+
+Every heavy-traffic table exports to CSV: Dividends, Holdings, Transactions, Accounts.
+Look for the **Export CSV** button at the top-right of each tab. The exports use the
+**at-current** display columns you currently see, so toggling the FX mode before
+exporting changes which figure ends up in the file. Headers match the column labels;
+dates are ISO 8601.
+
+### Undo toasts
+
+Deleting a dividend, transaction, account, or holding shows an **Undo** toast at the
+bottom of the window for ~6 seconds. Click **Undo** and the row is restored to its
+pre-delete state with all linkages intact (a DRIP-buy will reappear with its parent
+dividend's link, a stock split with its scaled shares). The toast also fires on bulk
+deletes — undo restores the whole batch.
+
+### Quality KPIs (dividend-growth lens)
+
+The dashboard's **Quality** KPI row implements four classic dividend-growth-investor
+metrics, all income-weighted across held tickers:
+
+- **Chowder Number** = current yield + 5y DGR. Threshold band depends on yield: ≥12 for
+  yld <3% (low-yielders need stronger growth), ≥8 for yld ≥3%. Green when passing.
+- **5y DGR** = compound annual DPS growth over five complete years, income-weighted.
+- **Payout ratio** = company-level DPS ÷ EPS (Yahoo's `payoutRatio`), income-weighted.
+  Bands <60% green / 60-75% yellow / >75% red.
+- **FCF coverage** = company FCF ÷ annual dividends paid. Multiple, e.g. 3× means three
+  times cushion. Bands ≥1.5× green / 1.0-1.5× yellow / <1.0× red. Per-ticker formula is
+  `fcf_yield ÷ (DPS_TTM_native ÷ price_native)` — dimensionally identical to FCF ÷
+  annual divs without needing shares-outstanding.
+
+Each card's detail panel shows the formula, the threshold, and how many tickers
+contributed. ETFs and funds are skipped (no company-level payout ratio); the sub-line's
+"income coverage" tells you what fraction of TTM income the headline actually
+represents.
+
+### Dividend Safety Score
+
+A 0-100 income-weighted read across held equities. Five sub-factors, each documented in
+the click-through detail panel: dividend-growth streak, payout ratio band, FCF coverage
+band, debt/equity, recent earnings growth. ETFs, funds, indices, and mutual funds are
+detected via Yahoo's `quoteType` and excluded from scoring (so they don't pull the
+headline down with sparse fundamentals). Bands: ≥80 Very safe, 65-79 Safe, 50-64
+Borderline, 35-49 Unsafe, <35 Very unsafe. **Open formula** — every weight is in the
+documentation and source code; there's no black-box subscription.
+
+### Benchmark comparison
+
+Configure a benchmark ticker in **Admin → BENCHMARK** (default: SPY). The dashboard
+fetches its price history and dividend events on launch and reports 1-year total
+return, current yield, and 3-year DGR — with the spread vs your portfolio in green
+(ahead) or red (behind). Spreads use the same FX mode the rest of the dashboard does.
 
 ---
 
