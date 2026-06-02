@@ -79,17 +79,28 @@
 
 ### 📊 Dashboard — the income command center
 
-KPIs (TTM/YTD/MTD income, forward annual + indicated, yield-on-cost, current yield),
-valuation (market value, unrealized & realized P&L, total return), dividend growth
-(CAGR, streaks, cut detection), concentration (HHI), FIRE income-target progress, and a
-projected ex-dividend calendar — every card hover-expandable for the math behind it.
+KPI rows for **realized income** (TTM/YTD/MTD), **forward income** (annual + indicated,
+gross / net of WHT), **valuation** (market value, unrealized & realized P&L, total
+return), **dividend growth** (CAGR, streaks, cuts), **quality** (Chowder, 5y DGR,
+payout ratio, FCF coverage), **efficiency / tax / risk** (concentration HHI, WHT %,
+recoverable US WHT, Safety Score) — every card click-expandable for the formula and
+per-ticker contributor stats.
 
 <p align="center"><img alt="Dashboard" src="images/dashboard.png" width="92%"></p>
 
-Breakdowns by account and source currency, lifetime cumulative-income curve, sector
-allocation, and the Top-10 dividend-payer **heatmap** (area = income, color = DPS growth).
+Plus a **FIRE timeline** with monthly-contribution projection, a **benchmark comparison**
+strip vs SPY / VYM / SCHD / SSMI, breakdowns by account and source currency, lifetime
+cumulative-income curve, sector allocation, a **trajectory** chart (yield-on-cost +
+forward income over 36 months), an **income drawdown** + **total-return drawdown** chart,
+an **ex-date heatmap** (78 weeks back, 26 ahead), and the Top-10 dividend-payer
+**heatmap** (area = income, color = DPS growth).
 
 <p align="center"><img alt="Dashboard — charts & treemap" src="images/dashboard-charts.png" width="92%"></p>
+
+**Make it yours.** Hit **⚙ customise** on the FX banner to hide widgets you don't care
+about; drag the **⋮⋮** handle to reorder. The grid auto-fits to your window: panels
+pack 2 or 3 across on a wide monitor, single-column on a narrow one — no breakpoints to
+configure.
 
 ### 💸 Dividends — the income ledger
 
@@ -202,6 +213,35 @@ so every tab fills with realistic numbers immediately. **Delete demo data** remo
 exactly those rows — your own data is never touched. Loading is blocked once you've
 entered real transactions.
 
+## Recently shipped
+
+The v0.8.x arc widened the Dashboard into a customisable analyst surface and
+landed the dividend-quality lens the app was missing:
+
+- **Dividend Safety Score (open formula, no subscription)** — 0–100 read per
+  holding from streak, payout ratio, FCF coverage, debt/equity, earnings growth.
+  Every weight documented; ETFs and funds skipped cleanly.
+- **Quality KPI row** — Chowder Number, income-weighted 5y DGR, payout ratio,
+  FCF coverage — each click-through detail panel explains the formula and the
+  threshold band.
+- **Benchmark comparison** — portfolio vs SPY / VYM / SCHD / SSMI: 1y total
+  return, current yield, 3y DGR, with spread.
+- **Aristocrat / King / Achiever / Contender badges** with portfolio income-share
+  by class.
+- **Trajectory chart** (YoC + forward income over 36 months) · **drawdown chart**
+  (income + total return) · **ex-date heatmap** (78 weeks back, 26 ahead) ·
+  **FIRE timeline** with monthly-contribution projection.
+- **Per-ticker drill page** — full dividend history, growth, fundamentals,
+  positions across accounts, free-form research notes.
+- **Customisable dashboard** — hide/show widgets via the ⚙ customise panel; drag
+  the ⋮⋮ handle to reorder; layout auto-fits to viewport width (panels pack
+  side-by-side when there's room, stack when there isn't).
+- **Command palette (⌘K)** — global fuzzy navigation across tabs, dialogs, and
+  actions.
+- **CSV export** for Dividends / Holdings / Transactions / Accounts.
+- **Undo toasts** on the heavy-traffic tables · **per-jurisdiction treaty WHT
+  rates** · **user-configurable yield band thresholds**.
+
 ## Coming next
 
 A focused build queue, in the order it'll land. Tap an issue and 👍 to push it
@@ -214,41 +254,35 @@ the app dedups the rest. This is the biggest day-one friction, so it lands
 first.
 → [#9 Broker CSV import](https://github.com/leviceroy/Dividend-Tracker/issues/9)
 
-#### 2. Per-ticker drill page — your dividend journal
-
-Click any holding or dividend → a dedicated page for that ticker: full dividend
-history, growth chart, positions across accounts, fundamentals, and a
-free-form research note that persists. The "tell me everything about JNJ" view
-the app is missing.
-→ [#10 Per-ticker drill page](https://github.com/leviceroy/Dividend-Tracker/issues/10)
-
-#### 3. Two new Dashboard charts — Yield-on-Cost over time + Forward-income trajectory
-
-The two visuals that *show* the dividend-growth thesis: YoC tilting up as raises
-compound, and forward annual income climbing month by month. Pure internal work,
-no external feed, fast turnaround.
-→ [#16 YoC + Forward trajectory charts](https://github.com/leviceroy/Dividend-Tracker/issues/16)
-
-#### 4. Dividend Safety Score — open-formula, no subscription
-
-A 0–100 safety read on every holding — payout ratio, FCF coverage, debt,
-recession resilience — with **every weight documented** (no black box). Plus
-the dividend-growth-investor companions: Chowder Number, 5-year DGR, payout
-ratio, FCF coverage as columns on Holdings.
-→ [#6 Safety + Chowder / 5y / payout / FCF](https://github.com/leviceroy/Dividend-Tracker/issues/6)
-
-#### 5. Real declared ex-dates + alerts
+#### 2. Real declared ex-dates + macOS alerts
 
 Replace the history-projected calendar with broker-declared ex-dates, and
 notify you on macOS when an ex-date is coming up or a dividend gets cut /
-raised. Sequenced with the Safety Score because they share the same upstream
-fundamentals feed.
+raised. The current "Upcoming ex-dates" list is projected from history — fine
+for most names, wrong for specials and frequency changes. This fixes it
+properly.
 → [#3 Declared ex-dividend calendar](https://github.com/leviceroy/Dividend-Tracker/issues/3)
 
-**After those**, in priority order: watchlist · benchmark comparison
-(SPY/VYM/SCHD/SSMI) · per-jurisdiction tax exports (DA-1, 1099-DIV) · allocation
-by market value · reinvestment simulator · FIRE timeline curve · Windows build
-· iOS read-only companion. The full backlog lives in
+#### 3. Watchlist tab — pre-purchase research dock
+
+A dedicated tab for tickers you don't own yet: yield, DGR, safety score,
+fundamentals, your own research notes, side-by-side with Holdings. The "should
+I buy this" workbench.
+
+#### 4. Tax-year CSV exports — DA-1 (Swiss) + 1099-DIV (US)
+
+Pre-formatted exports against the WHT-tracking work already in development.
+One CSV per tax year, per jurisdiction, ready for your accountant.
+
+#### 5. Allocation by market value — sector + geography
+
+Today's allocation card shows by income share. Adding the by-value lens (and a
+geography pivot alongside sector) makes the "where is my money concentrated"
+question answerable from the dashboard.
+
+**After those**, in priority order: reinvestment simulator ("what if I'd DRIP'd
+from date X") · expense ratio & TTM yield per instrument · Windows build · iOS
+/ iPad read-only companion · encrypted iCloud backup. The full backlog lives in
 [ROADMAP.md](ROADMAP.md) and the
 [roadmap issues](https://github.com/leviceroy/Dividend-Tracker/issues?q=is%3Aissue+label%3Aroadmap).
 
