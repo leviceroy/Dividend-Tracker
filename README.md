@@ -246,6 +246,17 @@ landed the dividend-quality lens the app was missing:
   and see the actual cumulative income curve next to "what if every dividend
   since then had been DRIP'd into the same ticker?" The widening gap
   visualises the compounding effect with the delta in the header.
+- **Watchlist tab** — pre-purchase research dock between Holdings and
+  Transactions. Per-row current price, TTM yield, 5y DGR, payout, FCF
+  coverage, expense ratio, Safety Score band. Target-price and target-yield
+  cells light up green when the market crosses them. Inline-create new
+  instruments without leaving the tab; one click to promote a ticker to a
+  real position.
+- **Expense ratio + TTM yield per instrument** — Holdings + Watchlist both
+  show the two key fund metrics. Expense ratio for ETFs / funds banded
+  cheap-index (<10bps) green to expensive (>50bps) red. TTM yield prefers
+  your own ledger when there's local dividend history, falls back to
+  Yahoo's stored value for fresh tickers.
 - **Undo toasts** on the heavy-traffic tables · **per-jurisdiction treaty WHT
   rates** · **user-configurable yield band thresholds**.
 
@@ -270,28 +281,26 @@ for most names, wrong for specials and frequency changes. This fixes it
 properly.
 → [#3 Declared ex-dividend calendar](https://github.com/leviceroy/Dividend-Tracker/issues/3)
 
-#### 3. Watchlist tab — pre-purchase research dock
-
-A dedicated tab for tickers you don't own yet: yield, DGR, safety score,
-fundamentals, your own research notes, side-by-side with Holdings. The "should
-I buy this" workbench.
-→ [#11 Watchlist tab](https://github.com/leviceroy/Dividend-Tracker/issues/11)
-
-#### 4. Tax-year CSV exports — DA-1 (Swiss) + 1099-DIV (US)
+#### 3. Tax-year CSV exports — DA-1 (Swiss) + 1099-DIV (US)
 
 Pre-formatted exports against the WHT-tracking work already in development.
 One CSV per tax year, per jurisdiction, ready for your accountant.
 → [#4 Per-jurisdiction tax reports + CSV exports](https://github.com/leviceroy/Dividend-Tracker/issues/4)
 
-#### 5. Live expense ratio + TTM yield per instrument
+#### 4. Cost-basis methods — FIFO / LIFO / WAC
 
-The two ETF / fund metrics the app currently leaves blank. Yahoo / issuer
-fact sheet pull at refresh time, surfaced on Holdings + the drill page.
-→ [#2 Live expense ratio + TTM yield per instrument](https://github.com/leviceroy/Dividend-Tracker/issues/2)
+Today every position uses weighted-average cost. Adding FIFO and LIFO as
+selectable per-account methods unlocks lot-level realized P&L for the tax
+exports above — particularly relevant for US 1099 reporting.
 
-**After those**, in priority order: Windows build (#5) · iOS / iPad read-only
-companion (#15) · encrypted iCloud backup · WHT-tracking general availability
-(#1). The full backlog lives in [ROADMAP.md](ROADMAP.md) and the
+#### 5. Windows build
+
+Tauri supports it; the signing + auto-update pipeline needs porting.
+→ [#5 Windows build](https://github.com/leviceroy/Dividend-Tracker/issues/5)
+
+**After those**, in priority order: iOS / iPad read-only companion (#15) ·
+encrypted iCloud backup · WHT-tracking general availability (#1). The full
+backlog lives in [ROADMAP.md](ROADMAP.md) and the
 [open roadmap issues](https://github.com/leviceroy/Dividend-Tracker/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap+sort%3Areactions-%2B1-desc).
 
 ### How to vote
