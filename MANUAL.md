@@ -87,11 +87,15 @@ ahead.
 
 **Charts** — Monthly Income (24m), Forward Calendar (next 12m), **Trajectory** (YoC and
 forward annual income over the last 36 months — visualises the dividend-growth thesis),
+**Reinvestment simulator** (counterfactual "what if I'd DRIP'd from date X" — pick 1Y /
+3Y / 5Y / All, the actual cumulative-income curve overlays a simulated curve where every
+dividend in window was reinvested into the same ticker at pay-date price; the widening
+gap is the compounding effect and the delta is in the header),
 **Drawdown** (TTM income drawdown and total-return drawdown side-by-side), **Ex-date
 heatmap** (78 weeks back, 26 ahead), Upcoming ex-dates list, breakdowns by account and
-currency, Cumulative Income (lifetime), Allocation by value (sector), and the Top-10
-payer **treemap** (area = income, color = DPS growth — green growing, slate flat, red
-cut).
+currency, Cumulative Income (lifetime), Allocation by value (sector **and** geography
+— `instrument.country` mapped to friendly labels), and the Top-10 payer **treemap**
+(area = income, color = DPS growth — green growing, slate flat, red cut).
 
 **Customise the layout.** Hit **⚙ customise** on the FX banner to open the layout
 panel. Tick / untick widgets to hide them; grab the **⋮⋮** handle and drag a row to a
