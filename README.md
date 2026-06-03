@@ -239,13 +239,16 @@ landed the dividend-quality lens the app was missing:
 - **Command palette (⌘K)** — global fuzzy navigation across tabs, dialogs, and
   actions.
 - **CSV export** for Dividends / Holdings / Transactions / Accounts.
+- **Allocation by market value** — sector and geography lenses sit alongside
+  the income-weighted allocation, so "where is my money concentrated" is
+  answerable from the dashboard.
 - **Undo toasts** on the heavy-traffic tables · **per-jurisdiction treaty WHT
   rates** · **user-configurable yield band thresholds**.
 
 ## Coming next
 
-A focused build queue, in the order it'll land. Tap an issue and 👍 to push it
-up the list — the more votes, the sooner it ships.
+A focused build queue, in the order it'll land. The roadmap is open — see
+**[How to vote](#how-to-vote)** below.
 
 #### 1. Broker CSV import — Schwab · Fidelity · IBKR · Swissquote · UBS
 
@@ -268,25 +271,35 @@ properly.
 A dedicated tab for tickers you don't own yet: yield, DGR, safety score,
 fundamentals, your own research notes, side-by-side with Holdings. The "should
 I buy this" workbench.
+→ [#11 Watchlist tab](https://github.com/leviceroy/Dividend-Tracker/issues/11)
 
 #### 4. Tax-year CSV exports — DA-1 (Swiss) + 1099-DIV (US)
 
 Pre-formatted exports against the WHT-tracking work already in development.
 One CSV per tax year, per jurisdiction, ready for your accountant.
+→ [#4 Per-jurisdiction tax reports + CSV exports](https://github.com/leviceroy/Dividend-Tracker/issues/4)
 
-#### 5. Allocation by market value — sector + geography
+#### 5. Reinvestment simulator — "what if I'd DRIP'd from date X"
 
-Today's allocation card shows by income share. Adding the by-value lens (and a
-geography pivot alongside sector) makes the "where is my money concentrated"
-question answerable from the dashboard.
+A counterfactual chart that shows how your income would have compounded if
+every dividend since a chosen date had been reinvested into the same ticker.
+The visual companion to the Trajectory chart's YoC tilt.
+→ [#14 Reinvestment simulator](https://github.com/leviceroy/Dividend-Tracker/issues/14)
 
-**After those**, in priority order: reinvestment simulator ("what if I'd DRIP'd
-from date X") · expense ratio & TTM yield per instrument · Windows build · iOS
-/ iPad read-only companion · encrypted iCloud backup. The full backlog lives in
-[ROADMAP.md](ROADMAP.md) and the
-[roadmap issues](https://github.com/leviceroy/Dividend-Tracker/issues?q=is%3Aissue+label%3Aroadmap).
+**After those**, in priority order: live expense ratio & TTM yield per
+instrument (#2) · Windows build (#5) · iOS / iPad read-only companion (#15) ·
+encrypted iCloud backup · WHT-tracking general availability (#1). The full
+backlog lives in [ROADMAP.md](ROADMAP.md) and the
+[open roadmap issues](https://github.com/leviceroy/Dividend-Tracker/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap+sort%3Areactions-%2B1-desc).
 
-Found a bug or have an idea? Open an
+### How to vote
+
+Want a feature higher up? **Reactions are the vote.** Open the issue, click
+the smiley (😀) button at the top-right of the issue body, and pick 👍. The
+[roadmap is sorted by 👍 count](https://github.com/leviceroy/Dividend-Tracker/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap+sort%3Areactions-%2B1-desc) — the most-voted items get prioritised. Comments are welcome
+too, but reactions are what move the priority needle.
+
+Found a bug or have an idea that isn't tracked yet? Open an
 [issue](https://github.com/leviceroy/Dividend-Tracker/issues/new/choose).
 
 ## FAQ
