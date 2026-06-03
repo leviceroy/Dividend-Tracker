@@ -44,6 +44,9 @@ happens privately. Suggestions welcome via
   in Admin
 - **Yield band thresholds** — user-configurable cutoffs colour YoC and current yield
   across the app
+- **Allocation by market value** — sector pivot **and** geography pivot
+  (`instrument.country`, ISO-3166 codes mapped to friendly labels) sit alongside the
+  income-weighted allocation chart
 - In-app auto-update (signed, GitHub Releases) with manual "Check for updates"
 - Demo data: one-click load/delete from Admin
 
@@ -55,11 +58,12 @@ happens privately. Suggestions welcome via
 
 ## Planned
 
+- Broker CSV import — Schwab · Fidelity · IBKR · Swissquote · UBS · the day-one
+  friction-killer
 - Real broker-declared ex-dividend calendar **+ macOS notifications** before ex-date and
   on dividend cuts / raises (replaces the historical-cadence projection)
 - Watchlist tab — pre-purchase research dock next to Holdings
 - DA-1 + 1099-DIV tax-year CSV exports — broaden the tax export surface
-- Allocation by **market value** — sector and geography lenses
 - Reinvestment simulator — "what if I'd DRIP'd from date X"
 - Expense ratio & TTM yield per instrument
 - Windows build
