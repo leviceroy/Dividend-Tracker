@@ -242,6 +242,10 @@ landed the dividend-quality lens the app was missing:
 - **Allocation by market value** — sector and geography lenses sit alongside
   the income-weighted allocation, so "where is my money concentrated" is
   answerable from the dashboard.
+- **Reinvestment simulator** — counterfactual overlay: pick 1Y / 3Y / 5Y / All
+  and see the actual cumulative income curve next to "what if every dividend
+  since then had been DRIP'd into the same ticker?" The widening gap
+  visualises the compounding effect with the delta in the header.
 - **Undo toasts** on the heavy-traffic tables · **per-jurisdiction treaty WHT
   rates** · **user-configurable yield band thresholds**.
 
@@ -279,17 +283,15 @@ Pre-formatted exports against the WHT-tracking work already in development.
 One CSV per tax year, per jurisdiction, ready for your accountant.
 → [#4 Per-jurisdiction tax reports + CSV exports](https://github.com/leviceroy/Dividend-Tracker/issues/4)
 
-#### 5. Reinvestment simulator — "what if I'd DRIP'd from date X"
+#### 5. Live expense ratio + TTM yield per instrument
 
-A counterfactual chart that shows how your income would have compounded if
-every dividend since a chosen date had been reinvested into the same ticker.
-The visual companion to the Trajectory chart's YoC tilt.
-→ [#14 Reinvestment simulator](https://github.com/leviceroy/Dividend-Tracker/issues/14)
+The two ETF / fund metrics the app currently leaves blank. Yahoo / issuer
+fact sheet pull at refresh time, surfaced on Holdings + the drill page.
+→ [#2 Live expense ratio + TTM yield per instrument](https://github.com/leviceroy/Dividend-Tracker/issues/2)
 
-**After those**, in priority order: live expense ratio & TTM yield per
-instrument (#2) · Windows build (#5) · iOS / iPad read-only companion (#15) ·
-encrypted iCloud backup · WHT-tracking general availability (#1). The full
-backlog lives in [ROADMAP.md](ROADMAP.md) and the
+**After those**, in priority order: Windows build (#5) · iOS / iPad read-only
+companion (#15) · encrypted iCloud backup · WHT-tracking general availability
+(#1). The full backlog lives in [ROADMAP.md](ROADMAP.md) and the
 [open roadmap issues](https://github.com/leviceroy/Dividend-Tracker/issues?q=is%3Aopen+is%3Aissue+label%3Aroadmap+sort%3Areactions-%2B1-desc).
 
 ### How to vote
