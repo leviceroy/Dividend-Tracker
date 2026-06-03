@@ -30,7 +30,7 @@ mix with your real data.
 
 ---
 
-## The six tabs
+## The seven tabs
 
 ### 1. Dashboard
 
@@ -152,7 +152,36 @@ totals — default sort by reporting-currency cost.
 To buy, sell, or split a position, use the Transactions tab — Holdings recomputes
 automatically.
 
-### 4. Transactions
+### 4. Watchlist
+
+Tickers you don't own yet — the pre-purchase research dock. Same engine as Holdings
+runs against every row: current price, TTM yield (computed from your dividend history
+÷ live price when available, else Yahoo's stored value with a small "Y" badge), 5-year
+DPS CAGR, payout ratio, FCF coverage, expense ratio (ETFs / funds only), Safety Score
+band.
+
+**Add a ticker** — click **+ Add ticker**, type the symbol. If the ticker is already
+in your Instruments catalog the form just adds the watchlist entry. If it's brand new
+the form expands to take Name / Currency / Sector / Country and creates the instrument
+inline before adding the watch row — no separate trip to Transactions.
+
+**Target price / target yield** — click any TGT cell to set a threshold. When the
+live price drops to ≤ your target price, or the computed yield rises to ≥ your target
+yield, the row highlights green with a "● target hit" tag.
+
+**Notes** — click the NOTES cell to add a free-form research note. Persists across
+launches, edits inline, blur to save.
+
+**→ Buy** — opens the Transactions tab with the ticker preset for a new-buy form.
+**✕** — removes the row from the watchlist (the instrument stays in the catalog).
+
+Background data refresh: live prices, price history, and fundamentals are fetched for
+watchlist tickers at the same time as for held positions. The fundamentals fetch
+(Yahoo) needs a network round-trip to the cookie-and-crumb endpoints; expect
+expense ratio / payout / FCF / safety to fill in within 30 seconds of launch on a
+typical portfolio.
+
+### 5. Transactions
 
 The ledger that everything else derives from. Buys, sells, opening balances, **stock
 splits**, and **DRIP-generated buys** (linked back to the parent dividend).
@@ -184,7 +213,7 @@ CAGR, growth streaks).
 reinvestment" and are **delete-protected** here — manage them from the parent dividend in
 the Dividends tab.
 
-### 5. Accounts
+### 6. Accounts
 
 Each broker account (name, broker, account currency, type, country) with TTM income and
 the live market value of its holdings (priced positions only). Sortable by value.
@@ -195,7 +224,7 @@ An account's currency is just its *reference* currency — you can still hold se
 any currency inside it. (Schwab account, USD reference, holding a CHF-denominated ETF
 works fine.)
 
-### 6. Admin
+### 7. Admin
 
 <p align="center"><img alt="Admin" src="images/admin.png" width="92%"></p>
 
