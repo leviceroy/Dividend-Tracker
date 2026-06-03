@@ -51,6 +51,15 @@ happens privately. Suggestions welcome via
   5Y / All window presets. Replays the ledger as "what if every dividend since date X
   had been DRIP'd into the same ticker at the pay-date price?" — surfaces the
   compounding delta as the headline figure
+- **Watchlist tab** — pre-purchase research dock between Holdings and Transactions.
+  Per-row current price, TTM yield, 5y DGR, payout ratio, FCF coverage, expense ratio,
+  Safety Score band. Target-price and target-yield triggers light up "● target hit"
+  when the market crosses them. Inline-create new instruments without leaving the
+  tab; → Buy promotes a ticker to a real position
+- **Expense ratio + TTM yield per instrument** — fetched from Yahoo's `fundProfile`
+  (expense ratio) and `summaryDetail.trailingAnnualDividendYield` (TTM yield),
+  surfaced on Holdings + Watchlist with cheap-index green / expensive red bands.
+  TTM yield prefers local DPS÷price calc when ≥1 dividend exists in the DB
 - In-app auto-update (signed, GitHub Releases) with manual "Check for updates"
 - Demo data: one-click load/delete from Admin
 
@@ -66,9 +75,9 @@ happens privately. Suggestions welcome via
   friction-killer
 - Real broker-declared ex-dividend calendar **+ macOS notifications** before ex-date and
   on dividend cuts / raises (replaces the historical-cadence projection)
-- Watchlist tab — pre-purchase research dock next to Holdings
 - DA-1 + 1099-DIV tax-year CSV exports — broaden the tax export surface
-- Expense ratio & TTM yield per instrument
+- Cost-basis methods — FIFO / LIFO selectable per account (today everything uses
+  weighted-average cost)
 - Windows build
 - License key activation (yearly subscription)
 
