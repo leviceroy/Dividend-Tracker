@@ -257,6 +257,27 @@ landed the dividend-quality lens the app was missing:
   cheap-index (<10bps) green to expensive (>50bps) red. TTM yield prefers
   your own ledger when there's local dividend history, falls back to
   Yahoo's stored value for fresh tickers.
+- **Broker-declared ex-dividend dates + macOS notifications** — the
+  Upcoming Ex-Dividend Dates widget reads broker-published dates from
+  Yahoo's `calendarEvents` instead of projecting from history. Each row
+  shows green ● declared / muted ○ projected so you can tell which figures
+  are authoritative. Admin → NOTIFICATIONS opt-in fires a macOS
+  notification N days before each declared ex-date (default 3 days).
+- **Owner Earnings + Implied Cost of Capital** — Buffett / Damodaran lens
+  on the dashboard. Owner Earnings yield (FCF proxy), Implied CoC
+  (`fcf_yield + earnings_growth`), Equity Risk Premium vs your risk-free
+  setting, plus a Coverage column so you can see when the headline is
+  half-blind.
+- **Sector-tuned Safety Score** — payout-ratio bands now adjust for
+  business model: REITs and utilities get looser thresholds (80% payout
+  is normal); financials get tighter ones. Watchlist gets a new COVERAGE
+  column that flags when a Safety Score is computed from partial data.
+- **Per-transaction fee split** — the FEE column on transactions now
+  breaks down into commission, stamp duty (Swiss FSTT / UK SDRT), and
+  FX spread. Click ▾ split on the transaction form to enter each
+  separately; the legacy aggregate stays in sync.
+- **Fuzzy ticker search** — typing SPI in any ticker field surfaces
+  SWX:CHSPI. Arrow keys + Enter to pick.
 - **Undo toasts** on the heavy-traffic tables · **per-jurisdiction treaty WHT
   rates** · **user-configurable yield band thresholds**.
 
@@ -272,26 +293,23 @@ the app dedups the rest. This is the biggest day-one friction, so it lands
 first.
 → [#9 Broker CSV import](https://github.com/leviceroy/Dividend-Tracker/issues/9)
 
-#### 2. Real declared ex-dates + macOS alerts
-
-Replace the history-projected calendar with broker-declared ex-dates, and
-notify you on macOS when an ex-date is coming up or a dividend gets cut /
-raised. The current "Upcoming ex-dates" list is projected from history — fine
-for most names, wrong for specials and frequency changes. This fixes it
-properly.
-→ [#3 Declared ex-dividend calendar](https://github.com/leviceroy/Dividend-Tracker/issues/3)
-
-#### 3. Tax-year CSV exports — DA-1 (Swiss) + 1099-DIV (US)
+#### 2. Tax-year CSV exports — DA-1 (Swiss) + 1099-DIV (US)
 
 Pre-formatted exports against the WHT-tracking work already in development.
 One CSV per tax year, per jurisdiction, ready for your accountant.
 → [#4 Per-jurisdiction tax reports + CSV exports](https://github.com/leviceroy/Dividend-Tracker/issues/4)
 
-#### 4. Cost-basis methods — FIFO / LIFO / WAC
+#### 3. Cost-basis methods — FIFO / LIFO / WAC
 
 Today every position uses weighted-average cost. Adding FIFO and LIFO as
 selectable per-account methods unlocks lot-level realized P&L for the tax
 exports above — particularly relevant for US 1099 reporting.
+
+#### 4. Monte-Carlo on the FIRE timeline
+
+Overlay 1,000 sequence-of-returns paths on the existing FIRE trajectory
+to surface p10 / p50 / p90 bands. Makes the "income target" answer honest
+about uncertainty rather than a single deterministic line.
 
 #### 5. Windows build
 
