@@ -60,6 +60,27 @@ happens privately. Suggestions welcome via
   (expense ratio) and `summaryDetail.trailingAnnualDividendYield` (TTM yield),
   surfaced on Holdings + Watchlist with cheap-index green / expensive red bands.
   TTM yield prefers local DPS÷price calc when ≥1 dividend exists in the DB
+- **Broker-declared ex-dividend dates** — reads `calendarEvents.exDividendDate` /
+  `dividendDate` from Yahoo and uses those as the cadence anchor in the Upcoming
+  Ex-Dividend Dates widget. Rows tagged green ● declared / muted ○ projected so
+  the user can tell the authoritative dates from the historical-cadence
+  projections. Fixes specials + frequency changes that broke the old projection.
+- **macOS notifications before ex-date** — opt-in Admin → NOTIFICATIONS toggle
+  fires a macOS heads-up N days before each declared ex-date (default 3 days).
+  Dedup keyed in localStorage so no spam across launches
+- **Owner Earnings + Implied Cost of Capital** — Buffett / Damodaran lens on the
+  dashboard. Owner Earnings yield (FCF as the audit-friendly proxy), Implied CoC
+  (`fcf_yield + earnings_growth`), Equity Risk Premium vs the user's risk-free
+  rate setting, plus a Coverage column
+- **Sector-tuned Safety Score** — payout-ratio bands now adjust per sector: REITs
+  and utilities pay out most of their income by structure, financials run lower.
+  REIT at 80% no longer mis-flagged "Unsafe"
+- **Per-transaction fee split** — `commission`, `stamp_duty` (Swiss FSTT / UK SDRT),
+  `fx_spread` as structured columns on transactions. Legacy `fee` stays as the
+  auto-summed aggregate so existing reports keep working
+- **Fuzzy ticker search** — typing partial symbols or names in any ticker field
+  surfaces matching catalog entries (TICKER · Name · CCY · Country) with arrow-key
+  navigation
 - In-app auto-update (signed, GitHub Releases) with manual "Check for updates"
 - Demo data: one-click load/delete from Admin
 
@@ -71,13 +92,16 @@ happens privately. Suggestions welcome via
 
 ## Planned
 
-- Broker CSV import — Schwab · Fidelity · IBKR · Swissquote · UBS · the day-one
-  friction-killer
-- Real broker-declared ex-dividend calendar **+ macOS notifications** before ex-date and
-  on dividend cuts / raises (replaces the historical-cadence projection)
+- Broker CSV import — xlsx + mixed-kind routing + per-broker pre-shipped
+  templates (Swissquote, Schwab, IBKR, Fidelity, UBS, Saxobank, Degiro). Phase B
+  adds OFX/QFX parsing for bank-grade dedup
 - DA-1 + 1099-DIV tax-year CSV exports — broaden the tax export surface
 - Cost-basis methods — FIFO / LIFO selectable per account (today everything uses
   weighted-average cost)
+- Monte-Carlo on the FIRE timeline — sequence-of-returns simulation surfaces
+  p10 / p50 / p90 confidence bands around the trajectory
+- Cut / raise / safety-score-change alerts on top of the existing ex-date
+  notifications
 - Windows build
 - License key activation (yearly subscription)
 
