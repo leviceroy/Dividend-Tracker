@@ -66,11 +66,20 @@ explains the formula and threshold band; the sub-line on each card shows how man
 tickers contributed and what fraction of TTM income they cover, so you can see when the
 headline isn't representative.
 
+**Owner Earnings · Implied CoC** — Buffett / Damodaran lens. Owner Earnings Yield
+(FCF as the audit-friendly proxy; Buffett's strict NI + D&A − maintenance capex isn't
+computable from Yahoo's data), Implied Cost of Capital (`fcf_yield + earnings_growth`),
+Equity Risk Premium vs the user's risk-free rate setting, plus a Coverage column so
+you can see when the headline is half-blind. Funds skipped entirely (no company-level
+FCF).
+
 **Efficiency · Tax · Risk** — TTM WHT paid, effective TTM WHT %, US DA-1 recoverable
 (against the treaty target % in Admin), portfolio concentration (HHI) by value, and the
 **Dividend Safety Score** — an income-weighted 0-100 read across held equities, banded
-Very safe / Safe / Borderline / Unsafe / Very unsafe. Open formula; click the card for
-the full per-holding contributor table and weight breakdown.
+Very safe / Safe / Borderline / Unsafe / Very unsafe. **Sector-tuned** as of v0.11.0:
+REITs and utilities get looser payout-ratio bands (80% payout is normal for them);
+financials get tighter ones. Open formula; click the card for the full per-holding
+contributor table and weight breakdown.
 
 **FIRE timeline** — set the annual income target in **Admin → GOALS**; the progress bar
 shows forward annual vs target. Below it, the **FIRE timeline chart** projects forward
@@ -92,7 +101,8 @@ forward annual income over the last 36 months — visualises the dividend-growth
 dividend in window was reinvested into the same ticker at pay-date price; the widening
 gap is the compounding effect and the delta is in the header),
 **Drawdown** (TTM income drawdown and total-return drawdown side-by-side), **Ex-date
-heatmap** (78 weeks back, 26 ahead), Upcoming ex-dates list, breakdowns by account and
+heatmap** (78 weeks back, 26 ahead), Upcoming ex-dates list (green ● for broker-declared
+dates from Yahoo's calendarEvents; muted ○ for projected-from-history rows), breakdowns by account and
 currency, Cumulative Income (lifetime), Allocation by value (sector **and** geography
 — `instrument.country` mapped to friendly labels), and the Top-10 payer **treemap**
 (area = income, color = DPS growth — green growing, slate flat, red cut).
@@ -241,6 +251,18 @@ works fine.)
 **Demo data**
 - *Load demo data* — seed the sample portfolio (only when no transactions exist).
 - *Delete demo data* — remove only demo-tagged rows.
+
+**Notifications**
+- *Enable ex-date notifications* — opt-in macOS heads-up notification before
+  each broker-declared ex-dividend date. First launch with this on triggers a
+  system permission prompt.
+- *Lead time (days)* — how many days before each declared ex-date to fire.
+  Default 3 (gives you a buy/sell window). Set 0 to notify only on the ex-date
+  itself.
+- The notifier reads Yahoo's `calendarEvents.exDividendDate` per ticker (cached
+  on each cold-start). Already-notified `${ticker}:${ex_date}` pairs are
+  remembered in localStorage so you don't get the same alert twice across
+  launches.
 
 **Database**
 - File location (with reveal-in-Finder). Back it up like any other file.
