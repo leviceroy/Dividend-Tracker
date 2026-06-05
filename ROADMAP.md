@@ -78,6 +78,15 @@ happens privately. Suggestions welcome via
 - **Per-transaction fee split** — `commission`, `stamp_duty` (Swiss FSTT / UK SDRT),
   `fx_spread` as structured columns on transactions. Legacy `fee` stays as the
   auto-summed aggregate so existing reports keep working
+- **Monte-Carlo on the FIRE timeline** — 1,000 sequence-of-returns paths via
+  GBM log-normal shocks overlay the deterministic projection as a p10–p90
+  ribbon. Makes the income-target answer honest about uncertainty instead of
+  a single line.
+- **Declared-pay override for Forward Annual** — Yahoo's
+  `summaryDetail.dividendRate` already reflects announced raises, so Forward
+  Annual now prefers the declared per-share rate per ticker, falling back to
+  TTM-DPS sum where unavailable. The dashboard FORWARD ANNUAL detail panel
+  shows Trailing / Indicated / Declared side-by-side.
 - **Fuzzy ticker search** — typing partial symbols or names in any ticker field
   surfaces matching catalog entries (TICKER · Name · CCY · Country) with arrow-key
   navigation
@@ -98,8 +107,6 @@ happens privately. Suggestions welcome via
 - DA-1 + 1099-DIV tax-year CSV exports — broaden the tax export surface
 - Cost-basis methods — FIFO / LIFO selectable per account (today everything uses
   weighted-average cost)
-- Monte-Carlo on the FIRE timeline — sequence-of-returns simulation surfaces
-  p10 / p50 / p90 confidence bands around the trajectory
 - Cut / raise / safety-score-change alerts on top of the existing ex-date
   notifications
 - Windows build
