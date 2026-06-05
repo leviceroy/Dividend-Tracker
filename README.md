@@ -276,6 +276,16 @@ landed the dividend-quality lens the app was missing:
   breaks down into commission, stamp duty (Swiss FSTT / UK SDRT), and
   FX spread. Click ▾ split on the transaction form to enter each
   separately; the legacy aggregate stays in sync.
+- **Monte-Carlo on the FIRE timeline** — 1,000 sequence-of-returns paths
+  overlay the deterministic projection as a p10–p90 ribbon, so the
+  income-target answer is honest about uncertainty. Volatility and path
+  count are configurable in Admin → FIRE & PROJECTIONS.
+- **Declared-pay override for Forward Annual** — Yahoo's
+  `summaryDetail.dividendRate` already reflects announced raises. Forward
+  Annual now prefers the declared per-share rate per ticker, falling back
+  to the TTM-DPS sum where unavailable. The FORWARD ANNUAL detail panel
+  shows Trailing / Indicated / Declared side-by-side so you can see which
+  source the headline is using.
 - **Fuzzy ticker search** — typing SPI in any ticker field surfaces
   SWX:CHSPI. Arrow keys + Enter to pick.
 - **Undo toasts** on the heavy-traffic tables · **per-jurisdiction treaty WHT
@@ -305,13 +315,7 @@ Today every position uses weighted-average cost. Adding FIFO and LIFO as
 selectable per-account methods unlocks lot-level realized P&L for the tax
 exports above — particularly relevant for US 1099 reporting.
 
-#### 4. Monte-Carlo on the FIRE timeline
-
-Overlay 1,000 sequence-of-returns paths on the existing FIRE trajectory
-to surface p10 / p50 / p90 bands. Makes the "income target" answer honest
-about uncertainty rather than a single deterministic line.
-
-#### 5. Windows build
+#### 4. Windows build
 
 Tauri supports it; the signing + auto-update pipeline needs porting.
 → [#5 Windows build](https://github.com/leviceroy/Dividend-Tracker/issues/5)
