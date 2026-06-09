@@ -276,6 +276,15 @@ landed the dividend-quality lens the app was missing:
   breaks down into commission, stamp duty (Swiss FSTT / UK SDRT), and
   FX spread. Click ▾ split on the transaction form to enter each
   separately; the legacy aggregate stays in sync.
+- **Per-account portfolio detail** — click any row on the Accounts tab to
+  drop into a dedicated per-portfolio surface: 4 KPI cards (value, total
+  return, IRR, passive income), allocation donut + breakdown table across
+  six asset classes (Stocks, REITs, Bonds, Commodities, Funds, Cash
+  placeholder), holdings list scoped to the account. Auto-classifies from
+  Yahoo's fund category; per-ticker override in Admin → Data → INSTRUMENTS
+  cleans up the Yahoo misclassifies in minutes. Per-account math reuses the
+  dashboard helpers on filtered slices, so summing across accounts equals
+  the portfolio headlines by construction.
 - **Monte-Carlo on the FIRE timeline** — 1,000 sequence-of-returns paths
   overlay the deterministic projection as a p10–p90 ribbon, so the
   income-target answer is honest about uncertainty. Volatility and path
