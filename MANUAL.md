@@ -144,6 +144,15 @@ top-right.
 - **DRIP**: ticking "Reinvested" reveals a **reinvest price** field. With both set, the
   app auto-creates a linked "buy" transaction (shares = net ÷ price, dated pay-date+1) so
   your holdings, WAC, cost basis, and future forward income all reflect the reinvestment.
+- **DPS cross-check** — a stored DPS and the row's own gross ÷ shares are two statements
+  about one fact. When they disagree the form raises a banner and the ledger's DPS cell
+  carries a **⚠** with both figures and the ratio. Forward income uses the stored DPS, so
+  one of the two is wrong and the statement decides which.
+- **Keyboard** — **Esc** cancels the form, **⌘S** saves it. The shortcut and the Save
+  button read the same rule, so a form the button refuses cannot be saved by the shortcut
+  either.
+- A withholding of **0%** renders as `0.0%`, not as the em dash the app uses everywhere
+  for *unknown* — a measured zero and a missing figure are different claims.
 
 <p align="center"><img alt="Dividend entry form" src="images/dividends-form.png" width="78%"></p>
 
@@ -244,6 +253,13 @@ works fine.)
   **at-transaction** (pay-date rate; required for tax reporting).
 - *FX provider* — Frankfurter (ECB) primary with Yahoo Finance fallback (recommended),
   ECB only, Yahoo only, or **Manual** (disable auto-fetch entirely).
+- *Cost-basis method* — **weighted average** (every buy averages into one cost per
+  position) or **FIFO** (first lot in is the first lot sold). The choice drives realized
+  P&L, total return and the per-position cost you see on Holdings. Changing it recomputes
+  from the ledger; it does not rewrite any transaction.
+- *Tax residence* — your country of residence. Withholding-tax treaty rates and the
+  reclaim card are answered against it, and until it is set they correctly answer nothing
+  rather than assuming a residence for you.
 
 **Goals**
 - *Annual income target (FIRE)* — the dashboard shows a progress strip toward this goal.
@@ -293,6 +309,30 @@ multi-year growth chart, current positions across accounts, fundamentals snapsho
 (payout ratio, EPS TTM, debt/equity, FCF yield), and a free-form **research note** that
 persists across sessions. The drill page is modal — the tab bar locks while it's open
 to avoid accidentally jumping away mid-research.
+
+### CSV import
+
+**Admin → Data → Import** takes any CSV of dividends or transactions. You map the columns
+once, save the mapping as a template, and reuse it on every later file from the same
+broker.
+
+- **Nothing is defaulted silently.** A cell that will not parse under the chosen decimal
+  format is an **error on that row**, never a quiet 0 or blank. That includes a
+  withholding column holding `35%` — a percentage is a rate, not an amount, so the row is
+  rejected rather than imported as 35 of tax.
+- **Unmapped columns are called out before you commit.** If no withholding column is
+  mapped, the preview says every row will import with WHT 0.00, so you can confirm these
+  dividends really carry none. The same goes for FX rate, share count and fee.
+- **Duplicates are caught twice** — against what is already on the book (`duplicate`) and
+  against earlier rows in the same file (`dup in file`).
+- **Soft warnings do not block.** A row whose DPS disagrees with its own amounts, or one
+  matching an existing ticker, account and pay date at a *different* amount (the shape of
+  a gross line and a net line imported as two dividends), is flagged **⚠ ready** and left
+  for you to decide.
+- If any row fails to insert, the completion box lists every reason with its row number.
+
+**Record date** is its own import target. A *Record Date* column no longer lands in the
+ex-date field.
 
 ### CSV export
 
