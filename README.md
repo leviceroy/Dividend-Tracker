@@ -304,8 +304,8 @@ landed the dividend-quality lens the app was missing:
   against your stated residence, and answer nothing until you set it rather
   than assuming one for you.
 - **Real / Nominal toggle on the FIRE projection** — the income-target chart
-  deflates to today's money when you ask it to, with a Monte-Carlo p10–p90
-  ribbon behind the deterministic line.
+  deflates to today's money when you ask it to, and the Monte-Carlo p10–p90
+  ribbon deflates with it.
 - **Imports that refuse to guess** — a cell that will not parse is an error on
   its row, never a silent 0; a percentage in an amount column is rejected;
   unmapped columns are called out before you commit; duplicates are caught
