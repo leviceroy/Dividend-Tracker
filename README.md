@@ -297,6 +297,19 @@ landed the dividend-quality lens the app was missing:
   source the headline is using.
 - **Fuzzy ticker search** — typing SPI in any ticker field surfaces
   SWX:CHSPI. Arrow keys + Enter to pick.
+- **Cost-basis method** — weighted average or FIFO, chosen in Admin → Portfolio.
+  Realized P&L, total return and per-position cost all follow the choice, and
+  changing it recomputes from the ledger without rewriting a transaction.
+- **Tax residence as an input** — treaty rates and the reclaim card answer
+  against your stated residence, and answer nothing until you set it rather
+  than assuming one for you.
+- **Real / Nominal toggle on the FIRE projection** — the income-target chart
+  deflates to today's money when you ask it to, with a Monte-Carlo p10–p90
+  ribbon behind the deterministic line.
+- **Imports that refuse to guess** — a cell that will not parse is an error on
+  its row, never a silent 0; a percentage in an amount column is rejected;
+  unmapped columns are called out before you commit; duplicates are caught
+  inside one file as well as against the book.
 - **Undo toasts** on the heavy-traffic tables · **per-jurisdiction treaty WHT
   rates** · **user-configurable yield band thresholds**.
 
@@ -305,11 +318,12 @@ landed the dividend-quality lens the app was missing:
 A focused build queue, in the order it'll land. The roadmap is open — see
 **[How to vote](#how-to-vote)** below.
 
-#### 1. Broker CSV import — Schwab · Fidelity · IBKR · Swissquote · UBS
+#### 1. Broker import, the rest of it — templates · xlsx · OFX/QFX
 
-Stop typing dividends by hand. Drop in a broker CSV, map the columns once, and
-the app dedups the rest. This is the biggest day-one friction, so it lands
-first.
+CSV import already ships: drop in a file, map the columns once, save the
+mapping as a template, and the app dedups the rest. What is left is the part
+that removes the mapping step — pre-shipped templates for Schwab, Fidelity,
+IBKR, Swissquote and UBS — plus xlsx files and OFX/QFX for bank-grade dedup.
 → [#9 Broker CSV import](https://github.com/leviceroy/Dividend-Tracker/issues/9)
 
 #### 2. Tax-year CSV exports — DA-1 (Swiss) + 1099-DIV (US)
@@ -318,11 +332,11 @@ Pre-formatted exports against the WHT-tracking work already in development.
 One CSV per tax year, per jurisdiction, ready for your accountant.
 → [#4 Per-jurisdiction tax reports + CSV exports](https://github.com/leviceroy/Dividend-Tracker/issues/4)
 
-#### 3. Cost-basis methods — FIFO / LIFO / WAC
+#### 3. Cost basis, the rest of it — LIFO and per-account selection
 
-Today every position uses weighted-average cost. Adding FIFO and LIFO as
-selectable per-account methods unlocks lot-level realized P&L for the tax
-exports above — particularly relevant for US 1099 reporting.
+Weighted-average and FIFO both ship today, chosen in Admin → Portfolio. Adding
+LIFO and making the choice per account unlocks lot-level realized P&L for the
+tax exports above — particularly relevant for US 1099 reporting.
 
 #### 4. Windows build
 
