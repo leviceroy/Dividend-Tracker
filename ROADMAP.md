@@ -99,6 +99,23 @@ happens privately. Suggestions welcome via
   navigation
 - In-app auto-update (signed, GitHub Releases) with manual "Check for updates"
 - Demo data: one-click load/delete from Admin
+- **Cost-basis method — weighted average or FIFO** — selectable in Admin → Portfolio.
+  Drives realized P&L, total return and per-position cost; changing it recomputes from
+  the ledger and rewrites nothing
+- **Tax residence as an input** — treaty rates and the reclaim card answer against your
+  stated residence, and answer nothing until it is set rather than assuming one
+- **Accuracy remediation** — the whole of a five-expert accuracy audit: the FIRE
+  projection deflates to real terms with a Real/Nominal toggle, the forward-income
+  headline is the local auditable TTM figure with Yahoo's declared rate beside it as a
+  signed divergence rather than silently adopted, payout-ratio judgement is sector-aware,
+  the benchmark comparison compares one basis, streak tiers name a streak, a closed
+  account's total return has a basis instead of a zero, and the decumulation model's
+  drift term is corrected
+- **Import correctness** — a cell that will not parse is an error on its row instead of a
+  silent 0 or NULL, a percentage in an amount column is refused, unmapped columns are
+  called out before the commit, duplicates are caught within one file as well as against
+  the book, every failed insert is reported with its reason, and a DPS that contradicts
+  its own row is flagged
 
 ## In development
 
@@ -108,12 +125,12 @@ happens privately. Suggestions welcome via
 
 ## Planned
 
-- Broker CSV import — xlsx + mixed-kind routing + per-broker pre-shipped
-  templates (Swissquote, Schwab, IBKR, Fidelity, UBS, Saxobank, Degiro). Phase B
-  adds OFX/QFX parsing for bank-grade dedup
+- Broker import, the rest of it — CSV with your own saved mappings already ships; what
+  is left is pre-shipped per-broker templates (Swissquote, Schwab, IBKR, Fidelity, UBS,
+  Saxobank, Degiro), xlsx, and OFX/QFX parsing for bank-grade dedup
 - DA-1 + 1099-DIV tax-year CSV exports — broaden the tax export surface
-- Cost-basis methods — FIFO / LIFO selectable per account (today everything uses
-  weighted-average cost)
+- Cost basis, the rest of it — LIFO, and per-account selection of the method (the
+  weighted-average / FIFO choice is one app-wide setting today)
 - Cut / raise / safety-score-change alerts on top of the existing ex-date
   notifications
 - Windows build
